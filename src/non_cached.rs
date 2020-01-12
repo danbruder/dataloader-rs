@@ -144,7 +144,7 @@ where
         // This allows to defer the actual loading much better, as leaves space
         // for more event loop ticks to happen before doing actual loading,
         // where new keys may be enqueued.
-        self.delay = Some(Delay::new(Duration::from_nanos(1)));
+        self.delay = Some(Delay::new(Duration::from_millis(1)));
         let _ = ready!(self.delay.as_mut().unwrap().poll_unpin(cx));
         // If Delay Future is somehow ready instantly (normally, this should not
         // happen), then defer this LoadFuture execution with Waker, which is
